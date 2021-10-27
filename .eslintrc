@@ -11,7 +11,7 @@
     "ecmaFeatures": {
       "jsx": true
     },
-    "sourceType": "script"
+    "sourceType": "module"
   },
   "rules": {
     "comma-dangle": [2, "always-multiline"],
@@ -33,10 +33,6 @@
     "function-paren-newline": 0,
     "no-plusplus": 1,
     "no-param-reassign": 1,
-    "no-restricted-syntax": [2, {
-      "selector": "ObjectPattern",
-      "message": "Object destructuring is not compatible with Node v4"
-    }],
     "strict": [2, "safe"],
     "valid-jsdoc": [2, {
       "requireReturn": false,

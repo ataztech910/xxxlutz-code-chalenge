@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { catalogReducer } from './CatalogReducer';
 
 const rootReducer = combineReducers({
-    catalog: catalogReducer
+    catalog: catalogReducer,
 });
 
 export default rootReducer;

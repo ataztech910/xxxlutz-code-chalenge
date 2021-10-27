@@ -4,15 +4,21 @@ import { StyledProductName } from "../ui/styled/StyledProductName";
 import { StyledProductPrice } from "../ui/styled/StyledProductPrice";
 import { IFurnitureItem } from "../types/interfaces/IFurnitureItem";
 import { StyledProductFlexLayouts } from "./styled/StyledProductFlexLayouts";
+import { StyledProductBrand } from "../ui/styled/StyledProductBrand";
 
 export const ProductItem = ({ item } : { item: IFurnitureItem }) => {
     return (
         <>
-            <StyledProductCard>
-                <StyledProductImage image={item.image} title={item.name} isSale={!!item.eyecatcher} />
+            <StyledProductCard url={item.url}>
+                <StyledProductImage
+                    image={item.image}
+                    title={item.name}
+                    isSale={!!item.eyecatcher}
+                    id={item.id} />
+                <StyledProductBrand name={item.brand}/>
                 <StyledProductFlexLayouts>
-                    <StyledProductName name={item.name} categoryName={item.brand} />
-                    <StyledProductPrice price={item.priceSale} previousPrice={item.price} />
+                    <StyledProductName name={item.name} />
+                    <StyledProductPrice isSale={!!item.eyecatcher} price={item.price} previousPrice={item.priceSale} />
                 </StyledProductFlexLayouts>
             </StyledProductCard>
         </>

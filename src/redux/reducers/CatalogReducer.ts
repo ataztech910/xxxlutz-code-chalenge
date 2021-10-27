@@ -13,19 +13,19 @@ export const catalogReducer = (
         case CATALOG_ACTION_NAMES.SET_CATALOG:
             return {
                 ...state,
-                itemsList: action.payload
+                itemsList: action.payload,
             };
 
         case CATALOG_ACTION_NAMES.SET_SEARCH_STRING:
             return {
                 ...state,
-                searchValue: action.payload
+                searchValue: action.payload,
             };
 
         case CATALOG_ACTION_NAMES.SET_SORTING_VALUE:
             return {
                 ...state,
-                sort: action.payload
+                sort: action.payload,
             };
         default:
             return state;

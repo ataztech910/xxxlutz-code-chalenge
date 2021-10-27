@@ -1,10 +1,16 @@
-import React from 'react';
-import { ProductList } from "./components/ProductList";
+import { useDispatch } from "react-redux";
+import { setCatalog } from "./redux/effects/Catalog";
+import { useEffect } from "react";
+import { StyledProductList } from "./components/styled/StyledProductList";
 
 function App() {
+    const dispatch = useDispatch();
+    useEffect(()=> {
+        dispatch(setCatalog());
+    }, [dispatch]);
   return (
     <>
-      <ProductList />
+      <StyledProductList />
     </>
   );
 }

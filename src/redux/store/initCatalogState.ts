@@ -4,6 +4,6 @@ export const initCatalogState = (): ICatalogState => {
     return {
         itemsList: [],
         sort: {},
-        searchValue: ""
+        searchValue: "",
     };
 };

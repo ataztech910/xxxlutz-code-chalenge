@@ -1,5 +1,6 @@
 export const possibleSortingArray = [
-    "price",
+    "priceAsc",
+    "priceDesc",
     "name",
-    "saleSorting"
+    "saleSorting",
 ]

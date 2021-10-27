@@ -1,4 +1,4 @@
-export const ProductName = ({className, name, categoryName} : Partial<any>) => {
+export const ProductBrand = ({className, name} : Partial<any>) => {
     return (
         <div className={ className }>
             { name }

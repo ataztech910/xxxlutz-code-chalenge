@@ -24,7 +24,6 @@ export const ProductList = ({ className } : Partial<any>) => {
         console.log(itemsMutableList);
     }
     itemsMutableList = sortKey ? sortArray(itemsMutableList, sortKey, sort.direction) : itemsMutableList;
-    console.log(itemsMutableList);
 
     return (
         <div className={ className }>

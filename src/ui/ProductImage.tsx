@@ -1,6 +1,7 @@
 import { getValueByLanguage } from "../utils/getValueByLanguage";
-import {MutableRefObject, useRef, useState} from "react";
+import { useRef, useState} from "react";
 import { useIntersection } from "../utils/intersectionHandler";
+import {makeRandomImage} from "../utils/makeRandomImage";
 
 export const ProductImage = ({className, image, title, isSale, id} : Partial<any>) => {
     const { REACT_APP_LANG } = process.env;
@@ -11,17 +12,13 @@ export const ProductImage = ({className, image, title, isSale, id} : Partial<any
         setIsInView(true);
     });
 
-    const makeRandomImage = (image: string, id: number) => {
-        return `${image}?id=${id}`;
-    }
-
     return (
         <div className={ className } >
             { isSale &&
-                <div className="isSale">{getValueByLanguage("saleTitle", REACT_APP_LANG)}</div>
+                <div role="title" className="isSale">{getValueByLanguage("saleTitle", REACT_APP_LANG)}</div>
             }
-            <div className="productImage" ref={imgRef}>
-                {isInView &&
+            <div className="productImage" ref={imgRef} role="img">
+                { isInView &&
                     <img
                         src={ makeRandomImage(image, id) }
                         alt={title}

@@ -1,4 +1,4 @@
-import {getValueByLanguage} from "../utils/getValueByLanguage";
+import { getValueByLanguage } from "../utils/getValueByLanguage";
 
 export const ProductPrice = ({className, price, previousPrice, isSale} : Partial<any>) => {
     const { REACT_APP_LANG } = process.env;
@@ -6,7 +6,7 @@ export const ProductPrice = ({className, price, previousPrice, isSale} : Partial
         return "regularPrice " + (isSale ? "isSalePrice" : "");
     }
     return (
-        <div className={ className }>
+        <div className={ className } role="price">
             <div className={conditionalClass()}>{ price }:-</div>
             {
                 isSale &&

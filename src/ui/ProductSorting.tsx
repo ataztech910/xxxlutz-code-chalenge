@@ -1,9 +1,9 @@
 import { getValueByLanguage } from "../utils/getValueByLanguage";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { possibleSortingArray } from "../utils/possibleSortingArray";
-import {MutableRefObject, useRef, useState} from "react";
-import {useOnClickOutside} from "../utils/clickOutsideHook";
-import {setSortingValueAction} from "../redux/actions/CatalogActions";
+import { MutableRefObject, useRef, useState } from "react";
+import { useOnClickOutside } from "../utils/clickOutsideHook";
+import { setSortingValueAction } from "../redux/actions/CatalogActions";
 
 export const ProductSorting = ({className} : Partial<any>) => {
     const { REACT_APP_LANG } = process.env;
@@ -21,7 +21,7 @@ export const ProductSorting = ({className} : Partial<any>) => {
     };
 
     return (
-        <div className={ className } ref={ref}>
+        <div className={ className } ref={ref} role="sort">
             <div className="sortingValue" onClick={() => setVisibility(!showList)}>
                 <div>{ getValueByLanguage(currentSorting.key, REACT_APP_LANG) }</div>
                 <div>

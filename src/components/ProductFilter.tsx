@@ -21,7 +21,7 @@ export const ProductFilter = ({className} : Partial<any>) => {
     };
 
     return (
-        <div className={className}>
+        <div className={className} role="filter">
             <input type="text" value={text} onChange={(e) => updateFilterString(e.target.value)} placeholder={ getValueByLanguage("filter", REACT_APP_LANG) } />
         </div>
     );

@@ -1,4 +1,4 @@
-import { getValueByLanguage } from "../utils/getValueByLanguage";
+import { getValueByLanguage } from "../getValueByLanguage";
 
 test("should return value by language", () => {
     const check = getValueByLanguage("saleTitle", "eng");

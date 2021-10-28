@@ -1,5 +1,5 @@
-import {sortArray} from "../utils/sortArray";
-import { mockCatalog } from "./mock";
+import {sortArray} from "../sortArray";
+import { mockCatalog } from "../../mock";
 
 test("should sort array by object", () => {
     const testSort = sortArray(mockCatalog, "price", "asc");

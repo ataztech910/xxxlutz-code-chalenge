@@ -8,7 +8,8 @@ import { StyledProductGridLayouts } from "./styled/StyledProductGridLayouts";
 import { makeUID } from "../utils/makeUID";
 import { sortArray } from "../utils/sortArray";
 import { StyledProductFilter } from "./styled/StyledProductFilter";
-import {getValueByLanguage} from "../utils/getValueByLanguage";
+import { getValueByLanguage } from "../utils/getValueByLanguage";
+import { filterArray } from "../utils/filterArray";
 
 export const ProductList = ({ className } : Partial<any>) => {
     const { REACT_APP_LANG } = process.env;
@@ -18,10 +19,7 @@ export const ProductList = ({ className } : Partial<any>) => {
     const sortKey = sort.key && sort.key.toLocaleLowerCase().includes("price")? "price" : sort.key;
     let itemsMutableList = [...itemsList];
     if (searchValue.length >= 2) {
-        itemsMutableList = itemsMutableList.filter((item: IFurnitureItem) =>
-            item.name.toLocaleLowerCase().includes(searchValue) ||
-            item.brand.toLocaleLowerCase().includes(searchValue));
-        console.log(itemsMutableList);
+        itemsMutableList = filterArray(itemsMutableList, searchValue);
     }
     itemsMutableList = sortKey ? sortArray(itemsMutableList, sortKey, sort.direction) : itemsMutableList;
 
@@ -41,7 +39,7 @@ export const ProductList = ({ className } : Partial<any>) => {
             </StyledProductGridLayouts>
             {
                 (!itemsMutableList || itemsMutableList.length === 0) &&
-                <div>{ getValueByLanguage("noValue", REACT_APP_LANG) }</div>
+                <div role="card">{ getValueByLanguage("noValue", REACT_APP_LANG) }</div>
             }
         </div>
     );

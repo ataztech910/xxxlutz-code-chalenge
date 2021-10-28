@@ -7,17 +7,30 @@ import { StyledProductFlexLayouts } from "./styled/StyledProductFlexLayouts";
 import { StyledProductGridLayouts } from "./styled/StyledProductGridLayouts";
 import { makeUID } from "../utils/makeUID";
 import { sortArray } from "../utils/sortArray";
+import { StyledProductFilter } from "./styled/StyledProductFilter";
+import {getValueByLanguage} from "../utils/getValueByLanguage";
 
 export const ProductList = ({ className } : Partial<any>) => {
+    const { REACT_APP_LANG } = process.env;
     const itemsList = useSelector((state: Partial<any>) => state.catalog.itemsList);
     const sort = useSelector((state: Partial<any>) => state.catalog.sort);
+    const searchValue = useSelector((state: Partial<any>) => state.catalog.searchValue);
     const sortKey = sort.key && sort.key.toLocaleLowerCase().includes("price")? "price" : sort.key;
-    let itemsMutableList = sortKey ? sortArray(itemsList, sortKey, sort.direction) : itemsList;
+    let itemsMutableList = [...itemsList];
+    if (searchValue.length >= 2) {
+        itemsMutableList = itemsMutableList.filter((item: IFurnitureItem) =>
+            item.name.toLocaleLowerCase().includes(searchValue) ||
+            item.brand.toLocaleLowerCase().includes(searchValue));
+        console.log(itemsMutableList);
+    }
+    itemsMutableList = sortKey ? sortArray(itemsMutableList, sortKey, sort.direction) : itemsMutableList;
+    console.log(itemsMutableList);
 
     return (
         <div className={ className }>
             <StyledProductFlexLayouts alignItems="center">
                 <StyledProductCount itemsCount={itemsMutableList.length} />
+                <StyledProductFilter />
                 <StyledProductSorting />
             </StyledProductFlexLayouts>
             <StyledProductGridLayouts>
@@ -27,6 +40,10 @@ export const ProductList = ({ className } : Partial<any>) => {
                     )
                 }
             </StyledProductGridLayouts>
+            {
+                (!itemsMutableList || itemsMutableList.length === 0) &&
+                <div>{ getValueByLanguage("noValue", REACT_APP_LANG) }</div>
+            }
         </div>
     );
 };

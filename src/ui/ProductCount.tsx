@@ -1,7 +1,10 @@
+import { getValueByLanguage } from "../utils/getValueByLanguage";
+
 export const ProductCount = ({className, itemsCount} : Partial<any>) => {
- return (
-     <div className={ className }>
-       <span>{ itemsCount }</span> <span>articles</span>
-     </div>
- );
+     const { REACT_APP_LANG } = process.env;
+     return (
+         <div className={ className }>
+           <span>{ itemsCount }</span> <span>{ getValueByLanguage("articlesCount", REACT_APP_LANG) }</span>
+         </div>
+     );
 };
